@@ -1,7 +1,5 @@
-mod day_one;
+mod day_three;
 
 fn main() {
-    println!("Hello, world!");
-    println!("Day one part one: {}", day_one::part_one());
-    println!("Day one part two: {}", day_one::part_two());
+    day_three::solve();
 }
