@@ -1,20 +1,12 @@
 use std::collections::HashSet;
 use std::fs;
 
-fn parse_input() -> (HashSet<i64>, Vec<i64>) {
-    let contents = fs::read_to_string("inputs/day-one.txt").expect("Oh no");
-    let mut values = HashSet::new();
-    let mut vector = Vec::new();
-    for line in contents.lines() {
-        let value = line.parse::<i64>().unwrap();
-        values.insert(value);
-        vector.push(value);
-    }
-
-    return (values, vector);
+pub fn solve_day_one() {
+    println!("Part one: {}", part_one());
+    println!("Part two: {}", part_two());
 }
 
-pub fn part_one() -> i64 {
+fn part_one() -> i64 {
     let (values, _) = parse_input();
 
     for value in &values {
@@ -27,7 +19,7 @@ pub fn part_one() -> i64 {
     panic!("No solution was found.")
 }
 
-pub fn part_two() -> i64 {
+fn part_two() -> i64 {
     let (values, vector) = parse_input();
 
     for i in &vector {
@@ -43,4 +35,17 @@ pub fn part_two() -> i64 {
     }
 
     panic!("No solution was found.");
+}
+
+fn parse_input() -> (HashSet<i64>, Vec<i64>) {
+    let contents = fs::read_to_string("inputs/day-one.txt").expect("Oh no");
+    let mut values = HashSet::new();
+    let mut vector = Vec::new();
+    for line in contents.lines() {
+        let value = line.parse::<i64>().unwrap();
+        values.insert(value);
+        vector.push(value);
+    }
+
+    return (values, vector);
 }

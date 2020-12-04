@@ -1,32 +1,6 @@
 use std::fs;
 
-pub fn solve_path(input: &String, right: usize, down: usize) -> i64 {
-    let mut x = 0;
-    let mut y = 1;
-    let mut trees = 0;
-
-    for line in input.lines() {
-        y += 1;
-        if y <= (down - 1) {
-            continue;
-        }
-        y = 0;
-
-        let length = line.len() - 1;
-        if line.chars().nth(x).unwrap() == '#' {
-            trees += 1;
-        }
-
-        x += right;
-        if x > length {
-            x -= length + 1;
-        }
-    }
-
-    trees
-}
-
-pub fn solve() {
+pub fn solve_day_three() {
     let contents = fs::read_to_string("inputs/day-three.txt").expect("Oh no");
 
     // Part one
@@ -43,4 +17,35 @@ pub fn solve() {
         "For part two, the final value is {}",
         a * b * c * d * part_one_trees
     );
+}
+
+fn solve_path(input: &String, right: usize, down: usize) -> i64 {
+    let mut x = 0;
+    let mut y = 1;
+    let mut trees = 0;
+
+    for line in input.lines() {
+        // Handle instances where we want to move down more than
+        // one line at a time the same way we handle moving rightward.
+        y += 1;
+        if y <= (down - 1) {
+            continue;
+        }
+        y = 0;
+
+        let length = line.len() - 1;
+        if line.chars().nth(x).unwrap() == '#' {
+            trees += 1;
+        }
+
+        // The pattern we're traversing repeats itself infinitely
+        // until we hit the bottom, so we want to loop the xval around
+        // when we've hit the rightward edge.
+        x += right;
+        if x > length {
+            x -= length + 1;
+        }
+    }
+
+    trees
 }
