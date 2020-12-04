@@ -20,7 +20,7 @@ pub fn solve_day_four() {
     );
 }
 
-fn solve_part_one(passports: &Vec<String>) -> usize {
+fn solve_part_one(passports: &[String]) -> usize {
     let required_fields = vec!["byr:", "iyr:", "eyr:", "hgt:", "hcl:", "ecl:", "pid:"];
 
     // We just need to filter out any of the passports that don't contain the
@@ -31,7 +31,7 @@ fn solve_part_one(passports: &Vec<String>) -> usize {
         .count()
 }
 
-fn solve_part_two(passports: &Vec<String>) -> usize {
+fn solve_part_two(passports: &[String]) -> usize {
     let validators: Vec<&dyn Validator> = vec![
         &BirthYear {} as &dyn Validator,
         &IssueYear {} as &dyn Validator,
@@ -134,9 +134,9 @@ impl Validator for Height {
                 let unit = String::from(&captures["unit"]);
 
                 if unit == "cm" {
-                    return height >= 150 && height <= 193;
+                    height >= 150 && height <= 193
                 } else {
-                    return height >= 59 && height <= 76;
+                    height >= 59 && height <= 76
                 }
             }
         }
@@ -152,10 +152,7 @@ impl Validator for EyeColor {
             static ref RE: Regex = Regex::new(r"\becl:(amb|blu|brn|gry|grn|hzl|oth)\b").unwrap();
         }
 
-        match RE.captures(&input[..]) {
-            None => false,
-            Some(_) => true,
-        }
+        RE.captures(&input[..]).is_some()
     }
 }
 
@@ -168,10 +165,7 @@ impl Validator for HairColor {
             static ref RE: Regex = Regex::new(r"\bhcl:#([a-f0-9]{6})\b").unwrap();
         }
 
-        match RE.captures(&input[..]) {
-            None => false,
-            Some(_) => true,
-        }
+        RE.captures(&input[..]).is_some()
     }
 }
 
@@ -184,9 +178,6 @@ impl Validator for PassportID {
             static ref RE: Regex = Regex::new(r"\bpid:\d{9}\b").unwrap();
         }
 
-        match RE.captures(&input[..]) {
-            None => false,
-            Some(_) => true,
-        }
+        RE.captures(&input[..]).is_some()
     }
 }

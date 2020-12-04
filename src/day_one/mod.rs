@@ -47,5 +47,5 @@ fn parse_input() -> (HashSet<i64>, Vec<i64>) {
         vector.push(value);
     }
 
-    return (values, vector);
+    (values, vector)
 }

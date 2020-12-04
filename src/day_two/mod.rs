@@ -8,7 +8,7 @@ pub fn solve_day_two() {
 
     for line in contents.lines() {
         let parts: Vec<_> = line.split_whitespace().collect();
-        let range: Vec<_> = parts[0].split("-").collect();
+        let range: Vec<_> = parts[0].split('-').collect();
 
         let min = range[0].parse::<usize>().unwrap();
         let max = range[1].parse::<usize>().unwrap();

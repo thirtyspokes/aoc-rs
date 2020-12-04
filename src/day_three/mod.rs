@@ -19,7 +19,7 @@ pub fn solve_day_three() {
     );
 }
 
-fn solve_path(input: &String, right: usize, down: usize) -> i64 {
+fn solve_path(input: &str, right: usize, down: usize) -> i64 {
     let mut x = 0;
     let mut y = 1;
     let mut trees = 0;
