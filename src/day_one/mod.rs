@@ -2,16 +2,15 @@ use std::collections::HashSet;
 use std::fs;
 
 pub fn solve_day_one() {
-    println!("Part one: {}", part_one());
-    println!("Part two: {}", part_two());
+    let (values_set, values_list) = parse_input();
+    println!("Part one: {}", part_one(&values_set, &values_list));
+    println!("Part two: {}", part_two(&values_set, &values_list));
 }
 
-fn part_one() -> i64 {
-    let (values, _) = parse_input();
-
-    for value in &values {
+fn part_one(values_set: &HashSet<i64>, values_list: &[i64]) -> i64 {
+    for value in values_list {
         let difference = 2020 - *value;
-        if values.contains(&difference) {
+        if values_set.contains(&difference) {
             return difference * value;
         }
     }
@@ -19,15 +18,13 @@ fn part_one() -> i64 {
     panic!("No solution was found.")
 }
 
-fn part_two() -> i64 {
-    let (values, vector) = parse_input();
-
-    for i in &vector {
-        for j in &vector {
+fn part_two(values_set: &HashSet<i64>, values_list: &[i64]) -> i64 {
+    for i in values_list {
+        for j in values_list {
             let partial_sum = i + j;
             if partial_sum < 2020 {
                 let difference = 2020 - partial_sum;
-                if values.contains(&difference) {
+                if values_set.contains(&difference) {
                     return i * j * difference;
                 }
             }
