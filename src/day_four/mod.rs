@@ -23,6 +23,8 @@ pub fn solve_day_four() {
 fn solve_part_one(passports: &Vec<String>) -> usize {
     let required_fields = vec!["byr:", "iyr:", "eyr:", "hgt:", "hcl:", "ecl:", "pid:"];
 
+    // We just need to filter out any of the passports that don't contain the
+    // matching strings for all fields, and the count is our solution.
     passports
         .iter()
         .filter(|passport| required_fields.iter().all(|field| passport.contains(field)))
@@ -40,6 +42,9 @@ fn solve_part_two(passports: &Vec<String>) -> usize {
         &PassportID {} as &dyn Validator,
     ];
 
+    // Given a list of validators (each one just a struct that implements the
+    // validator trait), filter out any passports for which every validator
+    // doesn't return true.
     return passports
         .iter()
         .filter(|passport| {
