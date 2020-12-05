@@ -1,6 +1,7 @@
 #[macro_use]
 extern crate lazy_static;
 
+mod day_five;
 mod day_four;
 mod day_one;
 mod day_three;
@@ -18,4 +19,7 @@ fn main() {
 
     println!("\nDay four: Passport Processing");
     day_four::solve_day_four();
+
+    println!("\nDay five: Binary Boarding");
+    day_five::solve_day_five();
 }
