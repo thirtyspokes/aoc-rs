@@ -19,6 +19,10 @@ pub fn solve_day_three() {
     );
 }
 
+/**
+ * Both parts of this problem involve being able to follow
+ * a diagonal path.
+ */
 fn solve_path(input: &str, right: usize, down: usize) -> i64 {
     let mut x = 0;
     let mut y = 1;
