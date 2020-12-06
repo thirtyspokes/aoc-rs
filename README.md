@@ -9,3 +9,4 @@ If you're also working through AoC, be forewarned that there are spoilers in her
 3. [Toboggan Trajectory](src/day_three/)
 4. [Passport Processing](src/day_four/)
 5. [Binary Boarding](src/day_five/)
+6. [Custom Customs](src/day_six/)
