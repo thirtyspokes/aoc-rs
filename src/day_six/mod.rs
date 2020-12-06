@@ -42,8 +42,8 @@ fn solve_part_one(groups: &[&str]) -> usize {
 
 /**
  * For part two, we want to know the total number of answers for all groups
- * where every member of a group answered a question: that is, for every
- * line in the group, how many answers are present on each line?
+ * where every member of a group answered a question: that is, how many answers
+ * are present on all of the lines in the group?
  *
  * We should theoretically be able to do this easily by turning each group
  * into a collection of sets (instead of just one big set), and then counting the
